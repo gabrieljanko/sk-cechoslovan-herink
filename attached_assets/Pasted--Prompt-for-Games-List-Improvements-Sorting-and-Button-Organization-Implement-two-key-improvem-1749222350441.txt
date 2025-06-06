@@ -1,0 +1,63 @@
+**Prompt for Games List Improvements - Sorting and Button Organization**
+
+Implement two key improvements to the games list interface for better usability and organization.
+
+**1. Sort Games by Date/Time (Nearest First):**
+
+**Sorting Logic:**
+- Sort all games by their start date and time in ascending order
+- Nearest upcoming game appears at the top of the list
+- Furthest future game appears at the bottom
+- Past games (if displayed) should appear after all future games
+- Ignore creation date/time - only consider the actual game start date/time
+
+**Implementation:**
+```javascript
+// Example sorting logic
+games.sort((a, b) => {
+  const dateA = new Date(a.startDateTime);
+  const dateB = new Date(b.startDateTime);
+  return dateA - dateB; // Ascending order (nearest first)
+});
+```
+
+**2. Organize Action Buttons with Dropdown Menu:**
+
+**Button Organization:**
+- **Keep visible:** "Zadat skóre" (primary action, frequently used)
+- **Move to dropdown menu:** "Upravit datum", "Obnovit hráče", "Archivovat", "Smazat"
+
+**Dropdown Implementation:**
+- Add a three-dots menu (⋮) or hamburger menu (☰) button
+- Position it next to or near the "Zadat skóre" button
+- Dropdown should contain the four less-frequently used actions
+- Maintain the same styling and colors for each action in the dropdown
+
+**Visual Layout:**
+```
+June 12, 2025 19:00    Současný                     Nehráno
+0 hráčů
+
+[⋮ Menu ▼]  [📝 Zadat skóre]
+
+Dropdown menu contains:
+├── 📝 Upravit datum
+├── 🔄 Obnovit hráče  
+├── 📁 Archivovat
+└── 🗑️ Smazat
+```
+
+**Implementation Details:**
+- Use a standard dropdown/popover component
+- Maintain existing icons and text for each action
+- Keep the same color coding (red for "Smazat", etc.)
+- Ensure dropdown closes when clicking outside or after action selection
+- Make dropdown accessible via keyboard navigation
+
+**Benefits:**
+- Cleaner, less cluttered interface
+- Games sorted by relevance (upcoming first)
+- Frequently used action ("Zadat skóre") remains prominent
+- Less-used management functions are available but not intrusive
+
+This will create a more organized and user-friendly games management interface.

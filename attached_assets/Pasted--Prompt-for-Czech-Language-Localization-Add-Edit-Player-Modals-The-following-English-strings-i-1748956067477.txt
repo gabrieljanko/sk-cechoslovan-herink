@@ -1,0 +1,76 @@
+**Prompt for Czech Language Localization - Add/Edit Player Modals**
+
+The following English strings in both the "Add New Player" and "Edit Player" modal dialogs need to be translated to Czech for the Czech language version of the portal. Please implement these exact translations:
+
+**Main Navigation (visible in background):**
+- "Games" → "Zápasy"
+- "Players" → "Hráči" 
+- "Statistics" → "Statistiky"
+
+**Page Headers:**
+- "Players" → "Hráči"
+- "Total: 27 players" → "Celkem: 27 hráčů"
+
+**Search and Action Elements:**
+- "Search players" (placeholder text) → "Hledat hráče"
+- "Add Player" (button) → "Přidat hráče"
+
+**Player List Items:**
+- "Joined: 22 days ago" → "Připojen: před 22 dny"
+- "Games:" → "Zápasy:"
+- "Wins:" → "Výhry:"
+- "Offense" → "Útok"
+- "Ball Handling" → "Práce s míčem"
+- "Defense" → "Obrana"
+- "Overall" → "Celkově"
+
+**Add New Player Modal:**
+- "Add New Player" → "Přidat nového hráče"
+- "Jméno" → (already in Czech - keep)
+- "Enter player name" (placeholder) → "Zadejte jméno hráče"
+- "Offense Rating (1-10)" → "Hodnocení útoku (1-10)"
+- "Defense Rating (1-10)" → "Hodnocení obrany (1-10)"
+- "Práce s míčem (1-10)" → (already in Czech - keep)
+- "Celkové hodnocení" → (already in Czech - keep)
+- "Add Player" (submit button) → "Přidat hráče"
+
+**Edit Player Modal:**
+- "Edit Player" → "Upravit hráče"
+- "Name" → "Jméno"
+- "Offense Rating (1-10)" → "Hodnocení útoku (1-10)"
+- "Defense Rating (1-10)" → "Hodnocení obrany (1-10)"
+- "Ball Handling (1-10)" → "Práce s míčem (1-10)"
+- "Overall Rating" → "Celkové hodnocení"
+- "Cancel" → "Zrušit"
+- "Save Changes" → "Uložit změny"
+
+**Implementation Notes:**
+- Maintain all form functionality and validation in both modals
+- Keep numerical values and ratings as they are
+- Preserve modal close (×) button functionality
+- Ensure consistent terminology across all player-related interfaces
+- The name field in Edit Player modal should be pre-populated with current player name
+
+**Complete Czech Interface Examples:**
+
+*Add Modal:*
+```
+Přidat nového hráče                    ✕
+Jméno: [Zadejte jméno hráče]
+Hodnocení útoku (1-10): [5]
+Hodnocení obrany (1-10): [5]
+Práce s míčem (1-10): [5]
+Celkové hodnocení: [5]
+                    [Zrušit] [Přidat hráče]
+```
+
+*Edit Modal:*
+```
+Upravit hráče                          ✕
+Jméno: [Fabio Decina]
+Hodnocení útoku (1-10): [6,1]
+Hodnocení obrany (1-10): [6,1]
+Práce s míčem (1-10): [5,1]
+Celkové hodnocení: [5,8]
+                    [Zrušit] [Uložit změny]
+```

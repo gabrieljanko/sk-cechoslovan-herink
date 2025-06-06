@@ -1,0 +1,40 @@
+**Prompt for Automatic Page Refresh After Player Operations**
+
+Implement automatic page refresh functionality for all player management operations to ensure the UI displays updated data immediately without requiring manual page refresh.
+
+**Required Auto-Refresh Triggers:**
+
+1. **After Adding a New Player:**
+   - When the "Add New Player" modal is successfully submitted
+   - Trigger refresh immediately after the player is created in the database
+   - Close the modal and refresh the page to show the new player in the list
+
+2. **After Editing a Player:**
+   - When the "Edit Player" modal is successfully submitted with changes
+   - Trigger refresh immediately after the player data is updated in the database
+   - Close the modal and refresh the page to show the updated player information
+
+3. **After Removing a Player:**
+   - When a player is successfully deleted (likely through a delete option in the player's menu)
+   - Trigger refresh immediately after the player is removed from the database
+   - Refresh the page to show the updated player list without the deleted player
+
+**Implementation Requirements:**
+
+- Use `window.location.reload()` or equivalent page refresh method
+- Ensure the refresh only occurs AFTER successful server response (not on failed operations)
+- Maintain the current page state (stay on the Players tab, preserve any filters if applicable)
+- Consider showing a brief loading indicator during the refresh process
+- Handle any potential race conditions between the database update and page refresh
+
+**Error Handling:**
+- Only refresh on successful operations
+- Display appropriate error messages for failed operations without refreshing
+- Ensure user doesn't lose their place in the interface on errors
+
+**User Experience:**
+- The refresh should feel seamless and immediate
+- User should see their changes reflected instantly
+- No manual refresh required from the user
+
+This will significantly improve the user experience by ensuring data consistency and eliminating the need for manual page refreshes after player management operations.
