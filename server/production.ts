@@ -19,7 +19,7 @@ export async function createApp() {
 
   app.use((req, res, next) => {
     const start = Date.now();
-    const path = req.path;
+    const requestPath = req.path;
     let capturedJsonResponse: Record<string, any> | undefined = undefined;
 
     const originalResJson = res.json;
@@ -30,8 +30,8 @@ export async function createApp() {
 
     res.on("finish", () => {
       const duration = Date.now() - start;
-      if (path.startsWith("/api")) {
-        let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
+      if (requestPath.startsWith("/api")) {
+        let logLine = `${req.method} ${requestPath} ${res.statusCode} in ${duration}ms`;
         if (capturedJsonResponse) {
           logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
         }
@@ -54,8 +54,21 @@ export async function createApp() {
     throw err;
   });
 
+  // Serve static files
+  app.use(express.static(path.join(process.cwd(), 'dist', 'public')));
+
+  // SPA routing - serve index.html for all non-API routes
   app.get('*', (req, res) => {
-    res.json({ status: 'SK Čechoslovan Herink API Running', path: req.path });
+    const indexPath = path.join(process.cwd(), 'dist', 'public', 'index.html');
+    res.sendFile(indexPath, (err) => {
+      if (err) {
+        res.status(404).json({ 
+          status: 'SK Čechoslovan Herink API Running', 
+          error: 'Frontend not built',
+          path: req.path 
+        });
+      }
+    });
   });
 
   return app;
